@@ -1,0 +1,28 @@
+<apex:page standardController="CampaignMember" extensions="CampaignMemberExtension">
+
+<head>
+<meta http-equiv="Content-Language" content="ja"/>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+<meta http-equiv="Content-Script-Type" content="text/javascript"/>
+<meta http-equiv="Content-Style-Type" content="text/css"/>
+</head>
+
+    <apex:pageBlock >
+
+        <apex:pageBlockTable value="{!cMemberHistorys}" var="cmh" cellPadding="0" border="0">
+
+            <apex:column >
+                <apex:outputLink target="_top" value="/{!cmh.Campaign.Id}">{!cmh.Campaign.Name}</apex:outputLink>
+            </apex:column>
+            <apex:column >
+                {!cmh.Campaign.Type}
+            </apex:column>
+            <apex:column >
+                {!cmh.FootprintsDateText__c}
+            </apex:column>
+
+        </apex:pageBlockTable>
+
+    </apex:pageBlock>
+
+</apex:page>

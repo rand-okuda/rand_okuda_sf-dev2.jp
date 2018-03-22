@@ -1,0 +1,17 @@
+<apex:page standardController="CampaignMember" extensions="CampaignMemberExtension">
+
+<head>
+<meta http-equiv="Content-Language" content="ja"/>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+<meta http-equiv="Content-Script-Type" content="text/javascript"/>
+<meta http-equiv="Content-Style-Type" content="text/css"/>
+</head>
+
+<apex:form target="_top">
+
+<apex:commandButton action="{!viewPrev}" value="前表示" />
+<apex:commandButton action="{!viewNext}" value="次表示" />
+
+</apex:form>
+
+</apex:page>

@@ -1,0 +1,563 @@
+<apex:page standardController="CampaignMember" extensions="CampaignMemberExtension">
+    
+    <head>
+        <meta http-equiv="Content-Language" content="ja"/>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+        <meta http-equiv="Content-Script-Type" content="text/javascript"/>
+        <meta http-equiv="Content-Style-Type" content="text/css"/>
+    </head>
+    
+    <apex:form target="_top">
+        <apex:commandButton action="{!viewPrev}" value="前表示" />
+        <apex:commandButton action="{!viewNext}" value="次表示" />
+    </apex:form>
+    
+    <apex:form target="_self">
+        
+        <apex:pageBlock rendered="{!isLead}">
+            
+            <apex:tabPanel >
+                <apex:tab label="お客様情報基本情報">
+                    <div>
+                        <table>
+                            <tr>
+                                <th>
+                                    <apex:commandButton action="{!updateThis}" value="保存" />
+                                </th>
+                                <th>
+                                    会社名
+                                </th>
+                                <th>
+                                    <apex:outputField value="{!currentLead.Company}" />
+                                </th>
+                                <th>
+                                    
+                                </th>
+                                <th>
+                                    電話
+                                </th>
+                                <th>
+                                    <apex:inputField value="{!currentLead.Phone}" />
+                                </th>
+                                <th>
+                                    評価
+                                </th>
+                                <th>
+                                    <apex:inputField value="{!currentLead.Rating}" />
+                                </th>
+                            </tr>
+                        </table>
+                        <hr/>
+                        <table>
+                            <tr>
+                                <th>
+                                    姓
+                                </th>
+                                <th>
+                                    <apex:inputField value="{!currentLead.LastName}" />
+                                </th>
+                                <th>
+                                    名
+                                </th>
+                                <th>
+                                    <apex:inputField value="{!currentLead.FirstName}" />
+                                </th>
+                                <th>
+                                    役職
+                                </th>
+                                <th>
+                                    <apex:inputField value="{!currentLead.Title}" />
+                                </th>
+                                <th>
+                                    メール
+                                </th>
+                                <th>
+                                    <apex:inputField value="{!currentLead.Email}" />
+                                </th>
+                            </tr>
+                        </table>
+                        <table>
+                            <tr>
+                                <th>
+                                    コールメモ
+                                </th>
+                            </tr>
+                            <tr>
+                                <th>
+                                    <apex:inputField value="{!currentLead.Description}" style="width:680px;height:40px;"/>
+                                </th>
+                            </tr>
+                        </table>
+                    </div>
+                </apex:tab>
+            </apex:tabPanel>
+            
+        </apex:pageBlock>
+        
+        
+        <apex:pageBlock rendered="{!isContact}">
+            
+            <apex:tabPanel >
+                
+                <apex:tab label="お客様情報基本情報">
+                    <div>
+                        <table>
+                            <tr>
+                                <th>
+                                    <apex:commandButton action="{!updateThis}" value="保存" />
+                                </th>
+                                <th>
+                                    会社名
+                                </th>
+                                <th>
+                                    <apex:outputField value="{!currentAccount.Name}" />
+                                </th>
+                                <th>
+                                    
+                                </th>
+                                <th>
+                                    評価
+                                </th>
+                                <th>
+                                    <apex:inputField value="{!currentAccount.Rating}" />
+                                </th>
+                                <th>
+                                    電話
+                                </th>
+                                <th>
+                                    <apex:inputField value="{!currentAccount.Phone}" />
+                                </th>
+                            </tr>
+                        </table>
+                        <hr/>
+                        <table>
+                            <tr>
+                                <th>
+                                    姓
+                                </th>
+                                <th>
+                                    <apex:inputField value="{!currentContact.LastName}" />
+                                </th>
+                                <th>
+                                    名
+                                </th>
+                                <th>
+                                    <apex:inputField value="{!currentContact.FirstName}" />
+                                </th>
+                                <th>
+                                    役職
+                                </th>
+                                <th>
+                                    <apex:inputField value="{!currentContact.Title}" />
+                                </th>
+                                <th>
+                                    メール
+                                </th>
+                                <th>
+                                    <apex:inputField value="{!currentContact.Email}" />
+                                </th>
+                            </tr>
+                        </table>
+                        <table>
+                            <tr>
+                                <th>
+                                    コールメモ
+                                </th>
+                            </tr>
+                            <tr>
+                                <th>
+                                    <apex:inputField value="{!currentAccount.Description}" style="width:600px;height:40px;"/>
+                                </th>
+                            </tr>
+                        </table>
+                    </div>
+                </apex:tab>
+                
+                <apex:tab label="ソリューション商材A">
+                    <div>
+                        <table>
+                            <tr>
+                                <th>
+                                    商材Aヒアリング項目
+                                </th>
+                                <th>
+                                    <apex:commandButton action="{!updateThis}" value="保存" />
+                                </th>
+                                <th>
+                                    
+                                </th>
+                                <th>
+                                    
+                                </th>
+                                <th>
+                                    
+                                </th>
+                                <th>
+                                    
+                                </th>
+                            </tr>
+                            <tr>
+                                <th>
+                                    
+                                </th>
+                                <th>
+                                    
+                                </th>
+                                <th>
+                                    <apex:inputField value="{!currentAccount.DescriptionA__c}" style="width:600px;height:60px;"/>
+                                </th>
+                                <td>
+                                    
+                                </td>
+                                <td>
+                                    
+                                </td>
+                                <td>
+                                    
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>
+                                    
+                                </th>
+                                <th>
+                                    
+                                </th>
+                                <th>
+                                    
+                                </th>
+                                <th>
+                                    
+                                </th>
+                                <th>
+                                    
+                                </th>
+                                <th>
+                                    
+                                </th>
+                            </tr>
+                            <tr>
+                                <td>
+                                    
+                                </td>
+                                <td>
+                                    
+                                </td>
+                                <td>
+                                    
+                                </td>
+                                <td>
+                                    
+                                </td>
+                                <td>
+                                    
+                                </td>
+                                <td>
+                                    
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>
+                                    
+                                </th>
+                                <th>
+                                    
+                                </th>
+                                <th>
+                                    
+                                </th>
+                                <th>
+                                    
+                                </th>
+                                <th>
+                                    
+                                </th>
+                                <th>
+                                    
+                                </th>
+                            </tr>
+                            <tr>
+                                <td>
+                                    
+                                </td>
+                                <td>
+                                    
+                                </td>
+                                <td>
+                                    
+                                </td>
+                                <td>
+                                    
+                                </td>
+                                <td>
+                                    
+                                </td>
+                                <td>
+                                    
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </apex:tab>
+                
+                <apex:tab label="ソリューション商材B">
+                    <div>
+                        <table>
+                            <tr>
+                                <th>
+                                    商材Bヒアリング項目
+                                </th>
+                                <th>
+                                    <apex:commandButton action="{!updateThis}" value="保存" />
+                                </th>
+                                <th>
+                                    
+                                </th>
+                                <th>
+                                    
+                                </th>
+                                <th>
+                                    
+                                </th>
+                                <th>
+                                    
+                                </th>
+                            </tr>
+                            <tr>
+                                <th>
+                                    
+                                </th>
+                                <th>
+                                    
+                                </th>
+                                <th>
+                                    <apex:inputField value="{!currentAccount.DescriptionB__c}" style="width:600px;height:60px;"/>
+                                </th>
+                                <td>
+                                    
+                                </td>
+                                <td>
+                                    
+                                </td>
+                                <td>
+                                    
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>
+                                    
+                                </th>
+                                <th>
+                                    
+                                </th>
+                                <th>
+                                    
+                                </th>
+                                <th>
+                                    
+                                </th>
+                                <th>
+                                    
+                                </th>
+                                <th>
+                                    
+                                </th>
+                            </tr>
+                            <tr>
+                                <td>
+                                    
+                                </td>
+                                <td>
+                                    
+                                </td>
+                                <td>
+                                    
+                                </td>
+                                <td>
+                                    
+                                </td>
+                                <td>
+                                    
+                                </td>
+                                <td>
+                                    
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>
+                                    
+                                </th>
+                                <th>
+                                    
+                                </th>
+                                <th>
+                                    
+                                </th>
+                                <th>
+                                    
+                                </th>
+                                <th>
+                                    
+                                </th>
+                                <th>
+                                    
+                                </th>
+                            </tr>
+                            <tr>
+                                <td>
+                                    
+                                </td>
+                                <td>
+                                    
+                                </td>
+                                <td>
+                                    
+                                </td>
+                                <td>
+                                    
+                                </td>
+                                <td>
+                                    
+                                </td>
+                                <td>
+                                    
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </apex:tab>
+                
+                <apex:tab label="ソリューション商材C">
+                    <div>
+                        <table>
+                            <tr>
+                                <th>
+                                    商材Cヒアリング項目
+                                </th>
+                                <th>
+                                    <apex:commandButton action="{!updateThis}" value="保存" />
+                                </th>
+                                <th>
+                                    
+                                </th>
+                                <th>
+                                    
+                                </th>
+                                <th>
+                                    
+                                </th>
+                                <th>
+                                    
+                                </th>
+                            </tr>
+                            <tr>
+                                <th>
+                                    
+                                </th>
+                                <th>
+                                    
+                                </th>
+                                <th>
+                                    <apex:inputField value="{!currentAccount.DescriptionC__c}" style="width:600px;height:60px;"/>
+                                </th>
+                                <td>
+                                    
+                                </td>
+                                <td>
+                                    
+                                </td>
+                                <td>
+                                    
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>
+                                    
+                                </th>
+                                <th>
+                                    
+                                </th>
+                                <th>
+                                    
+                                </th>
+                                <th>
+                                    
+                                </th>
+                                <th>
+                                    
+                                </th>
+                                <th>
+                                    
+                                </th>
+                            </tr>
+                            <tr>
+                                <td>
+                                    
+                                </td>
+                                <td>
+                                    
+                                </td>
+                                <td>
+                                    
+                                </td>
+                                <td>
+                                    
+                                </td>
+                                <td>
+                                    
+                                </td>
+                                <td>
+                                    
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>
+                                    
+                                </th>
+                                <th>
+                                    
+                                </th>
+                                <th>
+                                    
+                                </th>
+                                <th>
+                                    
+                                </th>
+                                <th>
+                                    
+                                </th>
+                                <th>
+                                    
+                                </th>
+                            </tr>
+                            <tr>
+                                <td>
+                                    
+                                </td>
+                                <td>
+                                    
+                                </td>
+                                <td>
+                                    
+                                </td>
+                                <td>
+                                    
+                                </td>
+                                <td>
+                                    
+                                </td>
+                                <td>
+                                    
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </apex:tab>
+                
+            </apex:tabPanel>
+            
+        </apex:pageBlock>
+        
+    </apex:form>
+    
+</apex:page>
